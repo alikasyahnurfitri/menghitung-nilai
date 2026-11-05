@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Nilai Akhir</title>
+</head>
+<body>
+  <h2>Hitung Nilai Akhir</h2>
+
+  Tugas: <input type="number" id="tugas"><br><br>
+  UTS: <input type="number" id="uts"><br><br>
+  UAS: <input type="number" id="uas"><br><br>
+
+  <button onclick="hitung()">Hitung</button>
+
+  <p id="hasil"></p>
+
+  <script>
+    function hitung() {
+      let tugas = Number(document.getElementById("tugas").value);
+      let uts = Number(document.getElementById("uts").value);
+      let uas = Number(document.getElementById("uas").value);
+
+      let nilaiAkhir = (tugas * 30 + uts * 30 + uas * 40) / 100;
+
+      let grade;
+      if (nilaiAkhir >= 90) {
+        grade = "A";
+      } else if (nilaiAkhir >= 80) {
+        grade = "B";
+      } else if (nilaiAkhir >= 70) {
+        grade = "C";
+      } else {
+        grade = "D";
+      }
+
+      let status;
+      if (nilaiAkhir >= 75 && uas >= 60) {
+        status = "Lulus";
+      } else {
+        status = "Remedial";
+      }
+
+      document.getElementById("hasil").innerHTML =
+        "Nilai akhir: " + nilaiAkhir + "<br>" +
+        "Grade: " + grade + "<br>" +
+        "Status: " + status;
+    }
+  </script>
+</body>
+</html>
